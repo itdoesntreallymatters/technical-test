@@ -1,0 +1,17 @@
+<div class="search">
+  <input type="text" placeholder="Search" [(ngModel)]="searchParameter" (keydown.enter)="onSearch()"
+    class="search-input" />
+  <button (click)="onSearch()" class="search-button">Search</button>
+</div>
+<h6 *ngIf="images">Number of results: {{ images.length }}</h6>
+<div *ngFor="let image of images">
+  <div (click)="onPageChange()" [routerLink]="['/asset', image.data[0].nasa_id]" class='result'>
+    <div class="image-result">
+      <img *ngIf="image.links" [src]="image.links[0].href" width="400" height="200" />
+    </div>
+    <div class="title-result">
+      <p *ngIf="!image.links">[Audio] {{ image.data[0].title }}</p>
+      <p *ngIf="image.links">{{ image.data[0].title }}</p>
+    </div>
+  </div>
+</div>
