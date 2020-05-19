@@ -1,57 +1,103 @@
 .search {
   display: flex;
   justify-content: flex-end;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin-top: 3em;
+  margin-bottom: 3em;
 }
 
 .search-input {
-  border-radius: 50px;
-  margin-right: 5px;
-  height: 30px;
-  width: 200px;
+  border-radius: 5em;
+  margin-right: .5em;
+  height: 3em;
+  width: 20.3em;
   overflow: visible;
-  outline: none;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 2em;
+  padding-right: 2em;
   border: none;
-  background-color: lightgrey;
+  outline: none;
+  background-color: #e6e6e6;
+  transition: width .5s ease-out, border 0s;
+}
+
+.search-input:focus {
+  width: 20em;
 }
 
 .search-button {
-  border-radius: 50px;
+  border-radius: 5em;
   background-color: #5356ed;
-  height: 30px;
-  width: 100px;
+  font-weight: bold;
+  height: 3em;
+  width: 10em;
   border: none;
   outline: none;
   position: relative;
   color: white;
 }
 
+.search-button:hover {
+  background-color: #7071ff;
+}
+
 .search-button:active {
   top: 1px;
 }
 
+.center {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .result {
-  padding: 10px;
+  padding: 1em;
+  margin: 2em;
+  min-width: 25em;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  transition: background-color 1s;
+  border-radius: .3em;
+  box-shadow: 6px 12px 50px 0 rgba(0, 0, 0, .14),
+    1px 4px 4px 0 rgba(0, 0, 0, .17);
+  outline: none;
+  transition: box-shadow 1s,
+    transform 1s;
 }
 
 .result:hover {
-  background-color: lightgrey;
+  transform: scale(1.05);
+  box-shadow: 18px 36px 50px 0 rgba(0, 0, 0, .14),
+    1px 4px 4px 0 rgba(0, 0, 0, .17);
   cursor: pointer;
 }
 
+@media (max-width: 1000px) {
+  .result {
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+}
+
 .image-result {
-  margin-right: 20px;
+  margin-right: 2em;
+}
+
+img {
+  width: 23em;
+  height: 11.5em;
+
 }
 
 .title-result {
   display: flex;
   flex-direction: row;
-  font-weight: 550;
+  font-weight: bold;
+}
+
+.collapser-result {
+  font-weight: bold;
+  color: #5356ed;
+}
+
+.collapser-result:hover {
+  color: #7071ff;
 }

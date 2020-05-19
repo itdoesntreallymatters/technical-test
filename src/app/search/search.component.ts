@@ -14,6 +14,7 @@ export class SearchComponent implements OnInit {
   images: any;
   searchParameter: string;
   url: string = 'search';
+  isCollapsed: Array<boolean> = [];
 
   constructor(private http: HttpClient, private urlService: UrlService) {
   }
@@ -24,6 +25,9 @@ export class SearchComponent implements OnInit {
   }
 
   onSearch() {
+    for (let i = 0; i < 100; i++) {
+      this.isCollapsed[i] = true;
+    }
     let params = new HttpParams().set('q', this.searchParameter)
     if (this.searchParameter)
       this.http.get(this.ROOT_URL + '/search', { params })
@@ -32,8 +36,8 @@ export class SearchComponent implements OnInit {
         });
   }
 
-  onPageChange() {
-    this.urlService.setUrl(this.images[0].href);
+  onPageChange(index: number) {
+    this.urlService.setUrl(this.images[index].href);
   }
 
 }

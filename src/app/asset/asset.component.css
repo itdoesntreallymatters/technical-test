@@ -1,0 +1,28 @@
+.center {
+    margin: 3em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.home-button {
+    margin: 3em;
+    border-radius: 5em;
+    background-color: #5356ed;
+    font-weight: bold;
+    height: 3em;
+    width: 10em;
+    border: none;
+    outline: none;
+    position: relative;
+    color: white;
+}
+
+.home-button:hover {
+    background-color: #7071ff;
+}
+
+.home-button:active {
+    top: 1px;
+}

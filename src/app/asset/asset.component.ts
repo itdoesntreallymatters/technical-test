@@ -26,15 +26,19 @@ export class AssetComponent implements OnInit {
     this.http.get(this.url)
       .subscribe(response => {
         this.formats = (<any>response);
-        this.finalUrl = this.formats.find(format => format.includes('~orig'));
-        if (this.finalUrl.includes('/image/'))
-          this.media_type = 'image';
-        else if (this.finalUrl.includes('/audio/'))
-          this.media_type = 'audio';
-        else if (this.finalUrl.includes('/video/'))
-          this.media_type = 'video';
-        else
+        if (this.formats.length > 0) {
+          this.finalUrl = this.formats.find(format => format.includes('~orig'));
+          if (this.finalUrl.includes('/image/'))
+            this.media_type = 'image';
+          else if (this.finalUrl.includes('/audio/'))
+            this.media_type = 'audio';
+          else if (this.finalUrl.includes('/video/'))
+            this.media_type = 'video';
+          else
+            this.router.navigate(['/']);
+        } else {
           this.router.navigate(['/']);
+        }
       });
   }
 
