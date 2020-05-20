@@ -1,29 +1,30 @@
-<div class="search">
-  <input type="text" placeholder="Search" [(ngModel)]="searchParameter" (keydown.enter)="onSearch()"
-    class="search-input" />
-  <button (click)="onSearch()" class="search-button">Search</button>
-</div>
-<div class="search">
-  <h6 *ngIf="images">Number of results: {{ images.length }}</h6>
-</div>
-<div *ngFor="let image of images; index as i" class="center">
-  <div (click)="onPageChange(i)" [routerLink]="['/asset', image.data[0].nasa_id]" class='result'>
-    <div class="image-result">
-      <img *ngIf="image.links" [src]="image.links[0].href" />
-    </div>
-    <div class="column">
-      <div class="title-result">
-        <p *ngIf="!image.links">[Audio] {{ image.data[0].title }}</p>
-        <p *ngIf="image.links">{{ image.data[0].title }}</p>
+  <div class="search">
+    <input type="text" placeholder="Search" [(ngModel)]="searchParameter" (keydown.enter)="onSearch()"
+      class="search-input" />
+    <button (click)="onSearch()" class="search-button">Search</button>
+  </div>
+  <div class="search">
+    <h6 *ngIf="images">Number of results: {{ images.length }}</h6>
+  </div>
+  <div *ngFor="let image of images; index as i" class="center">
+    <div (click)="onPageChange(i)" [routerLink]="['/asset', image.data[0].nasa_id]" class='result'>
+      <div class="image-result">
+        <img *ngIf="image.links" [src]="image.links[0].href" />
       </div>
-      <p *ngIf="isCollapsed[i]">
-        {{ image.data[0].description.slice(0, 300) }}...
-        <a *ngIf="isCollapsed[i]" (click)="isCollapsed[i] = !isCollapsed[i]; $event.stopPropagation()"
-          class="collapser-result">view more</a>
-      </p>
-      <p *ngIf="!isCollapsed[i]">{{ image.data[0].description }}</p>
-      <a *ngIf="!isCollapsed[i]" (click)="isCollapsed[i] = !isCollapsed[i]; $event.stopPropagation()"
-        class="collapser-result">view less</a>
+      <div class="column">
+        <div class="title-result">
+          <p *ngIf="!image.links">[Audio] {{ image.data[0].title }}</p>
+          <p *ngIf="image.links">{{ image.data[0].title }}</p>
+        </div>
+        <p *ngIf="image.data[0].description && image.data[0].description.length >= 300 && isCollapsed[i]">
+          {{ image.data[0].description.slice(0, 300) }}...
+          <a (click)="isCollapsed[i] = !isCollapsed[i]; $event.stopPropagation()" class="collapser-result">view more</a>
+        </p>
+        <p *ngIf="image.data[0].description && (image.data[0].description.length <= 300 || !isCollapsed[i])">
+          {{ image.data[0].description }}
+          <a *ngIf="!isCollapsed[i]" (click)="isCollapsed[i] = !isCollapsed[i]; $event.stopPropagation()"
+            class="collapser-result">view less</a>
+        </p>
+      </div>
     </div>
   </div>
-</div>

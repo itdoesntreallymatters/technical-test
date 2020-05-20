@@ -28,8 +28,12 @@ export class AssetComponent implements OnInit {
         this.formats = (<any>response);
         if (this.formats.length > 0) {
           this.finalUrl = this.formats.find(format => format.includes('~orig'));
-          if (this.finalUrl.includes('/image/'))
-            this.media_type = 'image';
+          if (this.finalUrl.includes('/image/')) {
+            if (this.finalUrl.includes('.tif'))
+              this.media_type = 'tif';
+            else
+              this.media_type = 'image';
+          }
           else if (this.finalUrl.includes('/audio/'))
             this.media_type = 'audio';
           else if (this.finalUrl.includes('/video/'))
@@ -41,5 +45,4 @@ export class AssetComponent implements OnInit {
         }
       });
   }
-
 }

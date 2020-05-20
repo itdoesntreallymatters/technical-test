@@ -1,9 +1,12 @@
 <div class="center">
 
-  <img *ngIf="media_type === 'image'" [src]="finalUrl" width="1000" />
+  <img *ngIf="media_type === 'image'" [src]="finalUrl" />
+  <a *ngIf="media_type === 'tif'" [href]="finalUrl">
+    <button class="download-button">Download image</button>
+  </a>
   <audio *ngIf="media_type === 'audio'" controls [src]="finalUrl">
   </audio>
-  <video *ngIf="media_type === 'video'" controls width="1000">
+  <video *ngIf="media_type === 'video'" controls>
     <source [src]="finalUrl" type="video/mp4" />
   </video>
   <button routerLink="/search" class=home-button>Home</button>

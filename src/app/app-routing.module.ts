@@ -6,13 +6,13 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/search', pathMatch: 'full' },
   { path: 'search', component: SearchComponent },
   {
     path: 'asset', children: [
       { path: ':nasa_id', component: AssetComponent }
     ]
   },
+  { path: '', redirectTo: '/search', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];
 
