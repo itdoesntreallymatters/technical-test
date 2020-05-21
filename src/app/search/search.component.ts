@@ -9,7 +9,6 @@ import { UrlService } from '../url.service';
 })
 export class SearchComponent implements OnInit {
 
-  // readonly API_KEY = 'N3tYbggz4vT4VapIbTceWKgzUl5CVElw3EXxXLdm';
   readonly ROOT_URL: string = 'https://images-api.nasa.gov';
   images: any;
   searchParameter: string;

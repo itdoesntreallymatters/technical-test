@@ -6,6 +6,10 @@
     flex-direction: column;
 }
 
+audio {
+    outline: none;
+}
+
 button {
     margin-top: 3em;
     border-radius: 5em;
